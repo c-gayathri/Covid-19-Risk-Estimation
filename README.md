@@ -23,16 +23,17 @@ pages/
   prevalence.py
   transmission.py
   overall.py
+requirements.txt  # pinned dependencies (Dash 1.x to match current imports)
 cred.json       # Google service-account key (required at runtime, do not commit)
 ```
 
 ## Prerequisites
 
-- Python 3.8+
+- Python 3.8 or 3.9 recommended (the pinned `dash==1.20.0` set installs cleanest there; newer Pythons may struggle with the legacy Flask/Jinja pins)
 - Google service-account `cred.json` with access to the backing Sheet
-- Packages: `pandas`, `numpy`, `dash`, `plotly`, `gspread`, `dash-bootstrap-components`
+- Dependencies are pinned in `requirements.txt`: `dash`, `dash-core-components`, `dash-html-components`, `dash-bootstrap-components`, `pandas`, `numpy`, `plotly`, `gspread`
 
-> Note: the code imports `dash_core_components` and `dash_html_components` (removed in Dash 2+). Either pin `dash==1.20.0`, or refactor to `from dash import dcc, html`.
+> The code imports `dash_core_components` and `dash_html_components` (removed in Dash 2+), so `requirements.txt` pins `dash==1.20.0`. To use modern Dash instead, change every `import dash_core_components as dcc` → `from dash import dcc` and `import dash_html_components as html` → `from dash import html`, then install unpinned `dash`.
 
 ## How to run
 
@@ -44,7 +45,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 
 # 2. Install dependencies
-pip install pandas numpy plotly gspread dash-bootstrap-components "dash==1.20.0"
+pip install -r requirements.txt
 
 # 3. Add credentials
 # Place your Google service-account key as ./cred.json in the repo root
