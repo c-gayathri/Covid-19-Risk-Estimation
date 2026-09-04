@@ -78,10 +78,3 @@ sh = gc.open_by_key('1TFvNZqHILzKK7VttupYZgrSNgiZXkGlEicvc50VhGvM')
 Expected worksheets: `P_inf`, `P_adverse`, `HealthSystem`, `Prevalence`, `Prevalence_Live`, `Transmission`, `Looking up latest` (ID string in `F2`, e.g. `11100` = gender/city/age/diabetes/hypertension codes).
 
 To retarget, change `open_by_key(...)` and keep the same sheet/tab names.
-
-## Known limitations
-
-- Delhi / Chennai only (city dropdown values `1`, `2`).
-- Transmission risk is currently hardcoded to `trans = 10` in `pages/transmission.py:88`.
-- Duplicate component `id='city'` across pages; navigation relies on `suppress_callback_exceptions=True`.
-- `cred.json` exists in the repo — rotate the key and add it to `.gitignore` if you push this anywhere.
